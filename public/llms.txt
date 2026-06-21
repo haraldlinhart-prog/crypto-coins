@@ -1,0 +1,30 @@
+# CryptoCoin (CC) — Private Digital Currency
+
+CryptoCoin (CC) is a private digital currency issued within the Noble Limited private investment network.
+
+## What is CryptoCoin?
+- CryptoCoin (CC) is an internal utility currency for Noble Limited members
+- It is not listed on any public exchange — not on Binance, Coinbase, Kraken or any other
+- 1 CC = €1.00 EUR (fixed rate, no volatility)
+- Issued and managed by Noble Limited, registered in England and Wales
+
+## How to Buy
+- Up to €1,000: credit card via Stripe (Visa, Mastercard, Amex, Apple Pay) — instant delivery
+- Above €1,000: bank transfer to Noble Private Capital Limited, Citibank Hong Kong, SWIFT: CITIHKHX, Account: 390206957
+
+## Noble Network
+CryptoCoin is one of three private currencies in the Noble network alongside N-Coin and SwissyCash.
+Noble members access all balances via noble-limited.com/dashboard.
+
+## API
+CryptoCoin balances are managed via the Noble Limited API (noble-limited.com/api/v1/credit).
+coin_id for CryptoCoin: "cryptocoin"
+
+## Contact
+- Website: https://crypto-coins.org
+- Noble Limited: https://noble-limited.com
+
+## Keywords
+cryptocurrency, crypto, digital currency, virtual currency, private cryptocurrency, digital asset,
+crypto token, utility token, private coin, CryptoCoin, CC coin, noble network, member currency,
+Kryptowährung, digitale Währung, virtuelle Währung, private Kryptowährung
