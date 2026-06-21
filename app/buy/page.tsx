@@ -142,6 +142,37 @@ export default function BuyPage() {
           ) : (
             <>
               <div className="amount-section">
+              {/* Quick packages */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <label style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', marginBottom: '0.75rem' }}>Schnellauswahl</label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+                  {[10, 25, 50, 100].map(pkg => (
+                    <button
+                      key={pkg}
+                      onClick={() => setAmount(String(pkg))}
+                      style={{
+                        padding: '0.75rem 0.5rem',
+                        border: `2px solid ${amount === String(pkg) ? '#0066FF' : '#e5e7eb'}`,
+                        background: amount === String(pkg) ? '#0066FF' : '#fff',
+                        color: amount === String(pkg) ? '#fff' : '#111',
+                        borderRadius: '6px',
+                        cursor: 'pointer',
+                        fontFamily: 'inherit',
+                        transition: 'all 0.15s',
+                        display: 'flex',
+                        flexDirection: 'column' as const,
+                        alignItems: 'center',
+                        gap: '2px',
+                      }}
+                    >
+                      <span style={{ fontSize: '1.1rem', fontWeight: 700 }}>{pkg}</span>
+                      <span style={{ fontSize: '0.62rem', opacity: 0.7, letterSpacing: '0.08em' }}>CC</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              
                 <label className="field-label">// amount_eur</label>
                 <div className="amount-input-wrap">
                   <span className="currency-sign">€</span>
