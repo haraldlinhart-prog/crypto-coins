@@ -8,13 +8,53 @@ const BANK = {
   currency: 'EUR',
 }
 
+function escapeHtml(s: string) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+// Einfaches In-Memory-Rate-Limit — verhindert, dass dieser Endpunkt als Mail-Relay
+// missbraucht wird (er verschickt eine Mail an eine frei angebbare Adresse).
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
+function isRateLimited(ip: string) {
+  const now = Date.now()
+  const entry = rateLimitMap.get(ip) || { count: 0, resetAt: now + 3600000 }
+  if (now > entry.resetAt) { entry.count = 0; entry.resetAt = now + 3600000 }
+  entry.count++
+  rateLimitMap.set(ip, entry)
+  return entry.count > 3
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, amount, ccAmount } = await req.json()
+    const { name, email, amount, ccAmount, website, elapsed } = await req.json()
+
+    // Honeypot
+    if (website) return NextResponse.json({ success: true })
+
+    // Mindestzeit: ein Mensch braucht länger als 3s, um das Formular auszufüllen.
+    if (typeof elapsed !== 'number' || elapsed < 3000) {
+      return NextResponse.json({ error: 'Bitte versuchen Sie es erneut.' }, { status: 400 })
+    }
+
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown'
+    if (isRateLimited(ip)) {
+      return NextResponse.json({ error: 'Zu viele Anfragen. Bitte später erneut versuchen.' }, { status: 429 })
+    }
+
     if (!name || !email || !amount) return NextResponse.json({ error: 'Missing fields' }, { status: 400 })
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: 'Invalid email' }, { status: 400 })
+    if (String(name).length > 200) return NextResponse.json({ error: 'Invalid name' }, { status: 400 })
 
     const resendKey = process.env.RESEND_API_KEY
     if (!resendKey) return NextResponse.json({ success: true })
+
+    const safeName = escapeHtml(name)
+    const safeEmail = escapeHtml(email)
 
     const html = `
 <div style="font-family:'Courier New',monospace;max-width:600px;margin:0 auto;padding:40px 32px;background:#050A14;color:#E8EDF5;">
@@ -23,7 +63,7 @@ export async function POST(req: NextRequest) {
     <div style="font-size:1.1rem;font-weight:700;color:#fff;">CryptoCoin — Wire Transfer Instructions</div>
   </div>
   <p style="color:#7A8BA0;line-height:1.8;margin-bottom:20px;">
-    Dear ${name},<br><br>
+    Dear ${safeName},<br><br>
     Thank you for your CryptoCoin purchase request.<br>
     Please transfer <span style="color:#fff;font-weight:700;">€${parseFloat(amount).toFixed(2)}</span> to receive
     <span style="color:#00D4FF;font-weight:700;">${parseFloat(ccAmount).toFixed(2)} CC</span>.
@@ -38,13 +78,13 @@ export async function POST(req: NextRequest) {
     </div>`).join('')}
     <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:0.82rem;">
       <span style="color:#4A5E75;">$ reference</span>
-      <span style="color:#E8EDF5;font-weight:700;">CC Purchase — ${email}</span>
+      <span style="color:#E8EDF5;font-weight:700;">CC Purchase — ${safeEmail}</span>
     </div>
   </div>
 
   <p style="color:#7A8BA0;font-size:0.85rem;line-height:1.75;">
     <span style="color:#fff;font-weight:700;">Important:</span> Use your Noble account email
-    (<span style="color:#00D4FF;">${email}</span>) as the payment reference.<br><br>
+    (<span style="color:#00D4FF;">${safeEmail}</span>) as the payment reference.<br><br>
     Your CryptoCoins will be credited within <span style="color:#fff;">1–3 business days</span> after we receive your funds.
   </p>
 
@@ -71,8 +111,8 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         from: 'CryptoCoin <noreply@pan21.com>',
         to: 'members@noble-limited.com',
-        subject: `CC Wire Transfer Request: ${name} — €${parseFloat(amount).toFixed(2)} / ${parseFloat(ccAmount).toFixed(2)} CC`,
-        html: `<p><strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>EUR:</strong> €${parseFloat(amount).toFixed(2)}<br><strong>CC:</strong> ${parseFloat(ccAmount).toFixed(2)} CC</p>`,
+        subject: `CC Wire Transfer Request: ${safeName} — €${parseFloat(amount).toFixed(2)} / ${parseFloat(ccAmount).toFixed(2)} CC`,
+        html: `<p><strong>Name:</strong> ${safeName}<br><strong>Email:</strong> ${safeEmail}<br><strong>EUR:</strong> €${parseFloat(amount).toFixed(2)}<br><strong>CC:</strong> ${parseFloat(ccAmount).toFixed(2)} CC</p>`,
       }),
     })
 

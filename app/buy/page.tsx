@@ -25,6 +25,8 @@ export default function BuyPage() {
   const [wireSubmitted, setWireSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [website, setWebsite] = useState('') // Honeypot
+  const [formstart] = useState(() => Date.now())
   const [rate, setRate] = useState(CC_RATE)
 
   useEffect(() => {
@@ -58,13 +60,14 @@ export default function BuyPage() {
 
   async function handleWireSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (website) return // Bot hat das Honeypot-Feld ausgefüllt
     if (!email || !amount || !wireName) return setError('Please fill in all fields.')
     setLoading(true); setError('')
     try {
       const res = await fetch('/api/wire', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: wireName, email, amount: parseFloat(amount), ccAmount }),
+        body: JSON.stringify({ name: wireName, email, amount: parseFloat(amount), ccAmount, website, elapsed: Date.now() - formstart }),
       })
       if (res.ok) setWireSubmitted(true)
       else setError('Submission failed. Please email us directly.')
@@ -223,6 +226,10 @@ export default function BuyPage() {
 
               {mode === 'wire' && (
                 <form onSubmit={handleWireSubmit} className="pay-form">
+                  <div style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }} aria-hidden="true">
+                    <label htmlFor="wire-website">Website</label>
+                    <input id="wire-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={e => setWebsite(e.target.value)} />
+                  </div>
                   <h3 className="form-title">Bank Transfer</h3>
                   <p className="form-sub">Amounts above €1,000 require a bank transfer. Fill in your details to receive instructions by email.</p>
                   <div className="bank-details">
