@@ -299,7 +299,7 @@ export default function HomePage() {
             Noble members hold CryptoCoin, N-Coin, and SwissyCash in a single private account dashboard.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="https://noble-limited.com/join" target="_blank" rel="noopener" className="btn-blue">Apply for Noble Membership →</a>
+            <a href="https://www.noble-limited.com/join?src=cryptocoins" target="_blank" rel="noopener" className="btn-blue">Apply for Noble Membership →</a>
             <a href="https://n-coins.net" target="_blank" rel="noopener" className="btn-outline-blue">N-Coin ↗</a>
             <a href="https://swissycash.com" target="_blank" rel="noopener" className="btn-outline-blue">SwissyCash ↗</a>
           </div>
