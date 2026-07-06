@@ -59,6 +59,13 @@ export default function HomePage() {
 
 return (
     <div>
+{/* <!-- DIRECTORIES:START --> */}
+<div style={{display:'flex',justifyContent:'center',gap:'16px',flexWrap:'wrap',margin:'16px 0'}}>
+<a href="https://ffa-links.de" target="_blank" rel="noopener"><img src="https://ffa-links.de/banner.svg" alt="FFA-Links" height={60} style={{borderRadius:'4px'}} /></a>
+<a href="https://swiss-quality.de" target="_blank" rel="noopener"><img src="https://swiss-quality.de/banner.svg" alt="Swiss Quality" height={60} style={{borderRadius:'4px'}} /></a>
+<a href="https://german-quality.net" target="_blank" rel="noopener"><img src="https://german-quality.net/banner.svg" alt="German Quality" height={60} style={{borderRadius:'4px'}} /></a>
+</div>
+{/* <!-- DIRECTORIES:END --> */}
       {/* ── Nav ── */}
       <nav className="nav">
         <div className="container nav-inner">
