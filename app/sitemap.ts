@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://crypto-coins.org'
+const BASE_URL = 'https://www.crypto-coins.org'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
