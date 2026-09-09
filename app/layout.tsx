@@ -83,6 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 <div dangerouslySetInnerHTML={{__html: "<div style=\"display:flex;justify-content:center;margin:16px 0;\">\n<ins data-revive-zoneid=\"6\" data-revive-id=\"0b01ba1194fdc0e89c6321458dbc5814\"></ins>\n</div>\n<img src=\"//:0\" alt=\"\" style=\"display:none\" onerror=\"(function(){if(document.getElementById(&#39;pan21sireviveload&#39;))return;var m=document.createElement(&#39;meta&#39;);m.id=&#39;pan21sireviveload&#39;;document.head.appendChild(m);(function(){var s=document.createElement(&#39;script&#39;);s.src=&#39;//ads.pan21.com/www/delivery/asyncjs.php&#39;;s.async=true;document.body.appendChild(s);})();})();\""}} />
 {/* <!-- REVIVE:END --> */}
         
+        <script src="/js/dir-banners.js" defer></script>
       </body>
     </html>
   )
