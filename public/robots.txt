@@ -18,3 +18,4 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://crypto-coins.org/sitemap.xml
+Sitemap: https://www.crypto-coins.org/sitemap-blog.xml
