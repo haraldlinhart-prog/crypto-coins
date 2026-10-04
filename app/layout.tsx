@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import './fonts.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://crypto-coins.org'),
@@ -47,13 +48,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-        {/* Matomo 21 */}
         {/* Schema.org */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
@@ -71,8 +65,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           "category": "Private Digital Currency / Virtual Currency / Cryptocurrency"
         })}} />
         <meta name="ai-crawlers" content="allowed" />
-              <script dangerouslySetInnerHTML={{__html: `var sc_project=13317697;var sc_invisible=1;var sc_security="458f783c";`}} />
-        <script async src="https://www.statcounter.com/counter/counter.js" />
       </head>
       <body>
         {children}
