@@ -3,7 +3,7 @@ import './globals.css'
 import './fonts.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://crypto-coins.org'),
+  metadataBase: new URL('https://www.crypto-coins.org/'),
   title: {
     default: 'CryptoCoin (CC) — Private Digital Currency | crypto-coins.org',
     template: '%s | CryptoCoin',
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: 'website',
-    url: 'https://crypto-coins.org',
+    url: 'https://www.crypto-coins.org/',
     siteName: 'CryptoCoin',
     title: 'CryptoCoin (CC) — Private Digital Currency',
     description: 'Buy CryptoCoin (CC) — the private digital currency of the Noble network. Secure, stable, members only.',
     locale: 'en_GB',
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://crypto-coins.org' },
+  alternates: { canonical: 'https://www.crypto-coins.org/' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           "name": "CryptoCoin",
           "alternateName": ["CC", "CryptoCoin CC"],
           "description": "CryptoCoin (CC) is a private digital currency issued within the Noble Limited private investment network. Not publicly traded. 1 CC = €1.00 EUR.",
-          "url": "https://crypto-coins.org",
+          "url": "https://www.crypto-coins.org/",
           "provider": {
             "@type": "Organization",
             "name": "Noble Limited",

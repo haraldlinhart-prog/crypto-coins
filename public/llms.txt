@@ -21,7 +21,7 @@ CryptoCoin balances are managed via the Noble Limited API (noble-limited.com/api
 coin_id for CryptoCoin: "cryptocoin"
 
 ## Contact
-- Website: https://crypto-coins.org
+- Website: https://www.crypto-coins.org
 - Noble Limited: https://noble-limited.com
 
 ## Keywords
