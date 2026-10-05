@@ -273,6 +273,17 @@ export default function BuyPage() {
           )}
         </div>
       </div>
+      <footer className="footer">
+        <div className="container footer-inner">
+          <div className="footer-links">
+            <Link href="/">Home</Link>
+            <Link href="/legal-notice">Legal Notice</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/impressum">Impressum</Link>
+            <Link href="/datenschutz">Datenschutz</Link>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

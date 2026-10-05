@@ -416,6 +416,10 @@ return (
             <a href="https://noble-limited.com" target="_blank" rel="noopener">Noble Limited</a>
             <a href="https://n-coins.net" target="_blank" rel="noopener">N-Coin</a>
             <a href="https://swissycash.com" target="_blank" rel="noopener">SwissyCash</a>
+            <Link href="/legal-notice">Legal Notice</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/impressum">Impressum</Link>
+            <Link href="/datenschutz">Datenschutz</Link>
           </div>
           <p className="footer-legal">
             © {new Date().getFullYear()} CryptoCoin (CC) · Issued by Noble Limited · Registered in England &amp; Wales ·

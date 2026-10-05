@@ -86,3 +86,21 @@ button { cursor: pointer; font-family: var(--ff-b); }
 @media (max-width: 768px) {
   .nav-links { display: none; }
 }
+
+/* Legal pages (Impressum, Datenschutz, Legal Notice, Privacy Policy) */
+.legal-top { border-bottom: 1px solid var(--lgray); background: var(--dark); }
+.legal-top-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 68px; }
+.legal-back { font-size: 0.78rem; color: var(--gray); font-family: var(--ff-mono); }
+.legal-back:hover { color: var(--blue3); }
+.legal-page { padding: 64px 2rem 80px; }
+.legal-page h1 { font-family: var(--ff-d); font-size: 2rem; color: var(--white); margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+.legal-page h2 { font-family: var(--ff-d); font-size: 1.1rem; color: var(--white); margin: 2rem 0 0.6rem; }
+.legal-page p { font-size: 0.92rem; color: var(--text); line-height: 1.75; margin-bottom: 0.9rem; overflow-wrap: anywhere; }
+.legal-page a { color: var(--blue3); }
+.legal-page a:hover { text-decoration: underline; }
+.legal-page .legal-alt { font-size: 0.8rem; color: var(--gray); margin-bottom: 2rem; }
+@media (max-width: 600px) {
+  .legal-top-inner { padding: 0 1rem; }
+  .legal-page { padding: 40px 1rem 56px; }
+  .legal-page h1 { font-size: 1.6rem; }
+}

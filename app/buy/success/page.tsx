@@ -36,6 +36,12 @@ function SuccessContent() {
           </a>
           <Link href="/" className="btn-ghost">← Back to CryptoCoin</Link>
         </div>
+        <div className="footer-links" style={{ marginTop: '2.5rem' }}>
+          <Link href="/legal-notice">Legal Notice</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
+          <Link href="/impressum">Impressum</Link>
+          <Link href="/datenschutz">Datenschutz</Link>
+        </div>
       </div>
     </div>
   )
