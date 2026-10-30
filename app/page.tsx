@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import SuchmaschinenBlogLink from './SuchmaschinenBlogLink';
 import './home.css'
 
 const CC_RATE = 1.00
@@ -83,7 +84,9 @@ return (
             </div>
           </Link>
           <ul className="nav-links">
-            <li><Link href="#about">About</Link></li>
+            <li><Link href="#about">About</Link>
+        {/* suchmaschinen.pro:blog-link */}
+        <SuchmaschinenBlogLink /></li>
             <li><Link href="#how">How It Works</Link></li>
             <li><Link href="#features">Features</Link></li>
             <li><Link href="#contact">Contact</Link></li>
