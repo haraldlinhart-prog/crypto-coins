@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.crypto-coins.org/blog</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.crypto-coins.org/blog/coins-kaufen-worauf-sie-beim-kauf-von-kryptowahrungen-achten-sollten</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.crypto-coins.org/blog/euro-stablecoin-dezentrale-wertstabilitat-fur-die-europaische-krypto-w</loc>
